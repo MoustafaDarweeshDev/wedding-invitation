@@ -6,6 +6,7 @@
 <title>Moustafa & Eman — Forever Begins</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -500,8 +501,9 @@
   }
 
   .story-quote {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
+    font-family: 'Amiri Quran', serif;
+    font-style: normal;
+    direction: rtl;
     font-size: clamp(1.3rem, 5vw, 2rem);
     color: var(--dark);
     line-height: 1.7;
@@ -779,6 +781,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 0;
     transition: box-shadow 0.3s ease;
+    cursor: pointer;
   }
 
   .location-card:hover {
@@ -800,14 +803,18 @@
   }
 
   .map-grid {
-    position: absolute;
+    /* position: absolute;
     inset: 0;
     opacity: 0.12;
     background-image: 
       linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
+    background-size: 32px 32px; */
+    position: absolute;
+    inset: 0;
+    opacity: 0.9;
+    background: url("./location1.png") center/280% no-repeat;
+}
 
   .map-pin {
     position: relative;
@@ -1291,7 +1298,7 @@
     <div class="section-rule" style="margin: 24px auto 0;"></div>
   </div>
 
-  <div class="location-card reveal">
+  <div class="location-card reveal" onclick="openMap()">
     <div class="location-map">
       <div class="map-grid"></div>
       <div class="map-pin">
@@ -1302,19 +1309,6 @@
       </div>
     </div>
     <div class="location-info">
-      <!-- <div class="location-name">Sofitel Cairo<br>Nile El Gezirah</div>
-      <div class="location-address">
-        3 El Thawra Council Street<br>
-        Smouha, Alexandreia<br>
-        Egypt<br><br>
-        Loutes
-      </div> -->
-      <!-- <a href="https://maps.google.com" target="_blank" class="location-link">
-        Get Directions
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a> -->
       <a href="https://www.google.com/maps/search/?api=1&query=Elshaheed+Abd+Elmonem+Riyad+Mosque+Smouha" target="_blank"
         class="location-link">
         Get Directions
@@ -1623,6 +1617,11 @@
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  //map
+  function openMap() {
+    window.open("https://www.google.com/maps/search/?api=1&query=Elshaheed+Abd+Elmonem+Riyad+Mosque+Smouha", "_blank");
+  }
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
